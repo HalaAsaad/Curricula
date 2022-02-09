@@ -1,0 +1,36 @@
+.form-demo  {
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 4rem;
+  width: 500px;
+
+  .logo-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    width: 60px;
+  }
+  .card {
+    margin: 5rem auto 0 auto;
+
+    .field {
+      margin-top: 30px;
+    }
+    .p-progress-spinner {
+      width: 100%;
+    }
+  }
+  
+}
+@media screen and (max-width: 960px) {
+  .form-demo  {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 640px) {
+  .form-demo  {
+    width: 90%;
+  }
+}

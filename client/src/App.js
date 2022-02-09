@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from "react-router-dom";
+import ArrayRoutes from './Router';
+import { useClearCache } from 'react-clear-cache';
+import Sidebar from './Components/Sidebar/Sidebar';
+
+const token = localStorage.getItem('token');
 
 function App() {
+  // let [searchParams, setSearchParams] = useSearchParams();
+  // let user = searchParams.get("user");
+  let location = useLocation();
+  
+  const { isLatestVersion, emptyCacheStorage } = useClearCache();
+  useEffect(() => {
+    if(!isLatestVersion) {
+      emptyCacheStorage();
+      console.log('Version updated!')
+    }
+  }, [isLatestVersion, emptyCacheStorage])
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {token && location.pathname !== '/signup' && <Sidebar />}
+      <Routes>
+        {ArrayRoutes.map((route, i) => (
+          <Route key={i} path={route.path} element={route.element} {...route} />
+        ))}
+      </Routes>
     </div>
   );
 }

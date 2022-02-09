@@ -24,7 +24,7 @@ exports.createUser =  async (req, res) => { // [ auth, admin ]
         const token = findUser.generateAuthToken();
         res.header('x-auth-token', token).send(_.pick(findUser, ['_id', 'name', 'email']));
     } catch (error) {
-        res.send({message: error.details[0].message})
+        res.send({message: error.details[0].message});
     }
 };
 

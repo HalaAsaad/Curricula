@@ -15,7 +15,11 @@ exports.login = async (req, res) => {
 
     //const token = jwt.sign({ _id: findUser._id }, process.env.jwtPrivateKey);
     const token = findUser.generateAuthToken();
-    res.send(token);
+    res.send({
+        token: token,
+        userId: findUser._id,
+        name: findUser.name
+    });
 };
 
 exports.PostReset = async (req, res, next) => {

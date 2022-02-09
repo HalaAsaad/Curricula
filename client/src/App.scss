@@ -1,0 +1,25 @@
+
+@font-face {
+    font-family: Nunito-Regular;
+    src: url('Nunito/Nunito-Regular.ttf');
+  }
+body {
+    background-color: #f8f9fa;
+}
+a {
+    text-decoration: none;
+}
+.App {
+    font-family: Nunito-Regular;
+}
+.p-float-label input:focus ~ label, 
+.p-float-label input.p-filled ~ label, 
+.p-float-label textarea:focus ~ label, 
+.p-float-label textarea.p-filled ~ label, 
+.p-float-label .p-inputwrapper-focus ~ label, 
+.p-float-label .p-inputwrapper-filled ~ label {
+    top: -0.37rem !important ;
+}
+.p-password-panel {
+    display: none;
+}
