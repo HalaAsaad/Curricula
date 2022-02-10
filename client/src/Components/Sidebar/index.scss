@@ -1,0 +1,128 @@
+@mixin flex(
+    $display, 
+    $flex-direction, 
+    $justify-content,
+    $align-items
+    ) {
+    display: $display;
+    flex-direction: $flex-direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+  }
+.header {
+    @include flex(flex, row , space-between, center);
+    background-color: white;
+    height: 50px;
+    border-bottom: 1px solid rgb(238, 236, 236);
+    padding: 10px 15px;
+
+    .pi-bars {
+        cursor: pointer;
+        font-size: 18px;
+        display: none;
+        &:hover {
+            color:#4F46E5;
+            font-weight: 500;
+        }
+    }
+
+    button {
+        background: #ffffff;
+        color: #343a40;
+        border-color: #ffffff;
+        border: 1px solid #ffffff;
+        padding: 5px 10px;
+        margin-left: auto;
+    }
+    .p-button:enabled:hover {
+        color:#4F46E5 ;
+        background: #ffffff;
+        border-color: #ffffff;
+        border: 1px solid #ffffff;
+    }
+}
+.sidebar {
+    background-color: #343a40;
+    color: rgba(255, 255, 255, 0.8);
+    width: 14rem;
+    padding: 10px 5px;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: .2s ease-in;
+    cursor: pointer;
+    font-size: 16px;
+
+    .logo-div {
+        @include flex(flex, row , flex-start, center);
+        width: 90%;
+    }
+
+    ul {
+        @include flex(flex, column , flex-start, flex-start);
+        margin-top: 15px;
+
+        li {
+            padding: 5px;
+            width: 90%;
+
+            a {
+                color: rgba(255, 255, 255, 0.8);
+            }
+
+            &:hover {
+                background-color: #4b545c;
+                border-radius: 4px
+            }
+        }
+        
+    }
+    
+}
+.sidebar.InActive {
+    width: 6rem;
+
+    .logo-div {
+        @include flex(flex, row , center, center);
+
+        h3 {
+            display: none;
+        }
+    }
+
+    ul {
+       text-align: center;
+
+        li {
+            width: 100%;
+
+            label {
+                display: none;
+            }
+           
+        }
+        
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .header {
+        .pi-bars {
+            display: block;
+        }
+    }
+    .sidebar {
+        width: 12rem;
+    }
+    .sidebar.InActive {
+        width: 0rem;
+        padding: 0px;
+        left: -20px;
+        .logo-div {
+            img {
+                width: 0px;
+            }
+        }
+    }
+  }

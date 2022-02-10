@@ -16,7 +16,7 @@ const ArrayRoutes = [
     },
     {
         path: '*',
-        element: NoMatch ,
+        element: <NoMatch /> ,
     },
 ];
 export default ArrayRoutes;

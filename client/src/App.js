@@ -23,11 +23,13 @@ function App() {
   return (
     <div className="App">
       {token && location.pathname !== '/signup' && <Sidebar />}
-      <Routes>
-        {ArrayRoutes.map((route, i) => (
-          <Route key={i} path={route.path} element={route.element} {...route} />
-        ))}
-      </Routes>
+      <div className='pages-container'>
+        <Routes>
+          {ArrayRoutes.map((route, i) => (
+            <Route key={i} path={route.path} element={route.element} {...route} />
+          ))}
+        </Routes>
+      </div>
     </div>
   );
 }

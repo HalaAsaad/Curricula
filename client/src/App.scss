@@ -9,8 +9,16 @@ body {
 a {
     text-decoration: none;
 }
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 .App {
     font-family: Nunito-Regular;
+}
+.pages-container {
+    margin: 15px 15px 15px 120px;
 }
 .p-float-label input:focus ~ label, 
 .p-float-label input.p-filled ~ label, 
@@ -22,4 +30,10 @@ a {
 }
 .p-password-panel {
     display: none;
+}
+
+@media screen and (max-width: 960px) {
+    .pages-container {
+        margin: 15px 15px;
+    }
 }
