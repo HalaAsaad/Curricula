@@ -12,66 +12,103 @@ const InputRender = ({
     optionLabel,
     optionValue,
     name,
+    labelTitle,
     ...rest
 }) => {
     let Input = (
-        <>
-        <InputText value={value} onChange={onChange} name={name} {...rest} />
-        </>
+        <div className="field">
+            <span className="p-float-label">
+                <InputText value={value} onChange={onChange} name={name} {...rest} />
+                <label>{labelTitle}</label>
+            </span>
+        </div>
     );
     if(varient === 'number') {
         Input = (
-            <>
-            <InputNumber 
-            id={name}
-            value={+value} 
-            onChange={onChange} 
-            name={name} 
-            {...rest} />
-            </>
+            <div className="field">
+                <span className="p-float-label">
+                    <InputNumber 
+                    id={name}
+                    value={+value} 
+                    onChange={onChange} 
+                    name={name} 
+                    {...rest} />
+                    <label>{labelTitle}</label>
+                </span>
+            </div>
         );
     } else if(varient === 'password') {
         Input = (
-            <>
-            <Password 
-            id={name}
-            value={value} 
-            onChange={onChange} 
-            name={name} 
-            {...rest} />
-            </>
+            <div className="field">
+                <span className="p-float-label">
+                    <Password 
+                    id={name}
+                    value={value} 
+                    onChange={onChange} 
+                    name={name} 
+                    {...rest} />
+                    <label>{labelTitle}</label>
+                </span>
+            </div>
         );
     } else if(varient === 'dropdown') {
         Input = (
-            <>
-            <Dropdown 
-            id={name}
-            name={name}
-            optionLabel={optionLabel}
-            optionValue={optionValue}
-            value={value} 
-            onChange={onChange} 
-            options={options}
-            {...rest}
-            />
-            </>
+            <div className="field">
+                <span className="p-float-label">
+                    <Dropdown 
+                    id={name}
+                    name={name}
+                    optionLabel={optionLabel}
+                    optionValue={optionValue}
+                    value={value} 
+                    onChange={onChange} 
+                    options={options}
+                    {...rest}
+                    />
+                    <label>{labelTitle}</label>
+                </span>
+            </div>
         );
     } else if(varient === 'inputswitch') {
         Input = (
-            <>
-            <InputSwitch 
-            id={name}
-            checked={value} 
-            onChange={onChange} 
-            name={name} 
-            {...rest} />
-            </>
+            <div style={{ display:'flex', alignItems:'center' }}>
+                <InputSwitch 
+                id={name}
+                checked={value} 
+                onChange={onChange} 
+                name={name} 
+                {...rest} />
+                <label>&nbsp; {labelTitle}</label>
+            </div>
         );
     }
     return (
-       <div>
+        <>
         {Input}
-       </div>
+        </>
     )   
    };
 export default InputRender;
+
+// const inputs = [
+//     {
+//         name: 'active',
+//         labelTitle: 'Active',
+//         varient: 'inputswitch'
+//     },
+//     {
+//         IsGroup: true,
+//         inputs: [
+//             {
+//                 name: 'name',
+//                 labelTitle: 'Name',
+//                 varient: 'text'
+//             },
+//             {
+//                 name: 'description',
+//                 labelTitle: 'Description',
+//                 varient: 'text'
+//             },
+//         ]
+//     }
+// ]

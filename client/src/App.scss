@@ -31,7 +31,11 @@ ul, ol {
 .p-password-panel {
     display: none;
 }
-
+.p-datatable {
+    table {
+        table-layout: auto !important;
+    }
+}
 @media screen and (max-width: 960px) {
     .pages-container {
         margin: 15px 15px;

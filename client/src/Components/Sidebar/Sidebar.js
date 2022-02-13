@@ -36,13 +36,13 @@ function Sidebar(props) {
                     <h3>Curricula</h3>
                 </div>
                 <ul> 
-                    <li>
+                    <li onClick={() => setInActive(true)}>
                         <Link to="/"><i className="pi pi-th-large"></i>&nbsp; <label>Dashboard</label></Link>
                     </li>
-                    <li>
-                        <Link to="/Page1"><i className="pi pi-times"></i>&nbsp; <label>Page1</label></Link>
+                    <li onClick={() => setInActive(true)}>
+                        <Link to="/Subjects"><i className="pi pi-book"></i>&nbsp; <label>Subjects</label></Link>
                     </li>
-                    <li>
+                    <li onClick={() => setInActive(true)}>
                         <Link to="/Page2"><i className="pi pi-times"></i>&nbsp; <label>Page2</label></Link>
                     </li>
                 </ul>

@@ -8,11 +8,14 @@ import "primereact/resources/primereact.min.css";                  //core css
 import "primeicons/primeicons.css";                                //icons
 import "/node_modules/primeflex/primeflex.css";
 import { BrowserRouter } from "react-router-dom";
+import StateProvider from './Context/TableContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <StateProvider>
+        <App />
+      </StateProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

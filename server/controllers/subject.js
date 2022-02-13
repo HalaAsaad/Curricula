@@ -13,22 +13,22 @@ exports.getSubjects = async (req, res) => {
 exports.getPaginationSubjects = async (req, res) => {
     let sortfield = req?.body?.sortField || null ;
     
-    let subjects;
+    let subjects = await Subject.find();
 
-    if( sortfield && sortfield?.length !== 0 ) {
-        subjects = await Subject.find()
-        .sort({ [sortfield] : req.body.sortValue }) // e: name: 1, description : -1
-        .where({ name : req.body.searchQuery })
-        .skip((req.body.pageNumber - 1) * req.body.pageSize)
-        .limit(req.body.pageSize)
-    } else {
-        subjects = await Subject.find()
-        .where({ name : req.body.searchQuery })
-        .skip((req.body.pageNumber - 1) * req.body.pageSize)
-        .limit(req.body.pageSize)
-    }
+    // if( sortfield && sortfield?.length !== 0 ) {
+    //     subjects = await Subject.find()
+    //     .sort({ [sortfield] : req.body.sortValue }) // e: name: 1, description : -1
+    //     .where({ name : req.body.searchQuery })
+    //     .skip((req.body.pageNumber - 1) * req.body.pageSize)
+    //     .limit(req.body.pageSize)
+    // } else {
+    //     subjects = await Subject.find()
+    //     .where({ name : req.body.searchQuery })
+    //     .skip((req.body.pageNumber - 1) * req.body.pageSize)
+    //     .limit(req.body.pageSize)
+    // }
     
-    if(!subjects) return res.status(400).send('Invalid request');
+    // if(!subjects) return res.status(400).send('Invalid request');
     try {
         await res.send({
             items: subjects,
@@ -63,7 +63,7 @@ exports.updateSubject = async (req, res) => {
 exports.deleteSubject = async (req, res) => {
     try {
         const removedSubject = await Subject.remove({ _id : req.params.subjectId })
-        res.json('removed successfuly.')
+        res.json({message: 'removed successfuly.'})
     } catch (error) {
         res.json({ message: error })
     }

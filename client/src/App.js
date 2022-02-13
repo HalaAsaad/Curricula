@@ -4,6 +4,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import ArrayRoutes from './Router';
 import { useClearCache } from 'react-clear-cache';
 import Sidebar from './Components/Sidebar/Sidebar';
+import { ScrollTop } from 'primereact/scrolltop';
 
 const token = localStorage.getItem('token');
 
@@ -22,6 +23,7 @@ function App() {
   
   return (
     <div className="App">
+      <ScrollTop />
       {token && location.pathname !== '/signup' && <Sidebar />}
       <div className='pages-container'>
         <Routes>
